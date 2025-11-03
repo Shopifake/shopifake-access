@@ -1,7 +1,7 @@
 # Base configuration
 spring:
   application:
-    name: microservice-template
+    name: shopifake-access
   
   jpa:
     open-in-view: false
@@ -15,7 +15,7 @@ spring:
     baseline-on-migrate: true
 
 server:
-  port: 8080
+  port: 8081
 
 # SpringDoc OpenAPI configuration
 springdoc:
@@ -30,10 +30,8 @@ management:
   endpoints:
     web:
       exposure:
-        include: health,info,metrics
-  endpoint:
-    health:
-      show-details: when-authorized
+        include: info,metrics
+      base-path: /actuator
   info:
     env:
       enabled: true
