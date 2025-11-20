@@ -12,7 +12,7 @@ import java.sql.SQLException;
  * Custom health indicator for database connectivity.
  * Checks if the database connection is available and responsive.
  */
-@Component
+@Component("db")
 public class DatabaseHealthIndicator implements HealthIndicator {
 
     /**
@@ -43,9 +43,11 @@ public class DatabaseHealthIndicator implements HealthIndicator {
     public Health health() {
         try (Connection connection = dataSource.getConnection()) {
             if (connection.isValid(CONNECTION_TIMEOUT)) {
+                String databaseProductName = connection.getMetaData()
+                        .getDatabaseProductName();
                 return Health.up()
-                        .withDetail("database", "Available")
-                        .withDetail("validationQuery", "Connection.isValid()")
+                        .withDetail("database", databaseProductName)
+                        .withDetail("validationQuery", "isValid()")
                         .build();
             } else {
                 return Health.down()
