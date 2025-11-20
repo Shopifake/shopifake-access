@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.shopifake</groupId>
-    <artifactId>acess-service</artifactId>
+    <artifactId>access-service</artifactId>
     <version>1.0.0</version>
     <name>access-microservice</name>
     <properties>
