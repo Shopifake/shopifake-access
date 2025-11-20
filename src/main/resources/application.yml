@@ -15,7 +15,7 @@ spring:
     baseline-on-migrate: true
 
 server:
-  port: 8081
+  port: 8080
 
 # SpringDoc OpenAPI configuration
 springdoc:
@@ -30,8 +30,12 @@ management:
   endpoints:
     web:
       exposure:
-        include: info,metrics
-      base-path: /actuator
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
+      probes:
+        enabled: true
   info:
     env:
       enabled: true
